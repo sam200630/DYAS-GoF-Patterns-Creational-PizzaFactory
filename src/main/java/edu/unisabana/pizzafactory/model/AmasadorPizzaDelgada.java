@@ -8,16 +8,11 @@ import java.util.logging.Logger;
  *
  * @author cesarvefe
  */
-public class AmasadorPizzaDelgada {
-
-    
-    
+public class AmasadorPizzaDelgada implements Amasador {
     public void amasar() {
         Logger.getLogger(AmasadorPizzaDelgada.class.getName())
-                .log(Level.INFO, "[@@] Amasando la pizza delgada con masa convencional.");
+                .log(Level.INFO, "[@@] Amasando la pizza delgada.");
         
-        //CODIGO DE LLAMADO AL MICROCONTROLADOR
-        
-    }
-    
+
+            }
 }
