@@ -28,7 +28,7 @@ public class PreparadorPizza {
             
             // Selección del tipo de pizza
             FabricaPizza fabrica;
-            String tipoPizza = "integral"; // Esto podría ser una entrada del usuario
+            String tipoPizza = "gruesa"; // Esto podría ser una entrada del usuario
 
             switch (tipoPizza) {
                 case "delgada" -> {
