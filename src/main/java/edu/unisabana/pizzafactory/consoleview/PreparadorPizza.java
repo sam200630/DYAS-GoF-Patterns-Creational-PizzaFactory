@@ -23,12 +23,12 @@ public class PreparadorPizza {
 
     public static void main(String args[]) {
         try {
-            Ingrediente[] ingredientes = new Ingrediente[]{new Ingrediente("queso", 1), new Ingrediente("jamon", 2)};
+            Ingrediente[] ingredientes = new Ingrediente[] { new Ingrediente("queso", 1), new Ingrediente("jamon", 2) };
             PreparadorPizza pp = new PreparadorPizza();
-            
+
             // Selección del tipo de pizza
             FabricaPizza fabrica;
-            String tipoPizza = "gruesa"; // Esto podría ser una entrada del usuario
+            String tipoPizza = "integral"; // Esto podría ser una entrada del usuario
 
             switch (tipoPizza) {
                 case "delgada" -> {
@@ -41,15 +41,17 @@ public class PreparadorPizza {
                 }
                 case "integral" -> {
                     fabrica = new FabricaPizzaIntegral();
-                    Logger.getLogger(PreparadorPizza.class.getName()).log(Level.INFO, "[@@] Pizza integral.");}
+                    Logger.getLogger(PreparadorPizza.class.getName()).log(Level.INFO, "[@@] Pizza integral.");
+                }
                 default -> {
                     throw new ExcepcionParametrosInvalidos("Tipo de pizza inválido: " + tipoPizza);
-                    }
+                }
             }
 
-            pp.prepararPizza(ingredientes, Tamano.PEQUENO, fabrica);
+            pp.prepararPizza(ingredientes, Tamano.MEDIANO, fabrica);
         } catch (ExcepcionParametrosInvalidos ex) {
-            Logger.getLogger(PreparadorPizza.class.getName()).log(Level.SEVERE, "Problema en la preparación de la Pizza", ex);
+            Logger.getLogger(PreparadorPizza.class.getName()).log(Level.SEVERE,
+                    "Problema en la preparación de la Pizza", ex);
         }
     }
 
@@ -59,10 +61,10 @@ public class PreparadorPizza {
         Amasador am = fabrica.crearAmasador();
         Horneador hpd = fabrica.crearHorneador();
         Moldeador mp = fabrica.crearMoldeador();
-        
+
         // Amasamos la pizza
         am.amasar();
-        
+
         // Moldeamos según el tamaño
         if (tam == Tamano.PEQUENO) {
             mp.moldearPizzaPequena();
@@ -71,10 +73,10 @@ public class PreparadorPizza {
         } else {
             throw new ExcepcionParametrosInvalidos("Tamaño de pizza inválido: " + tam);
         }
-        
+
         // Aplicamos los ingredientes
         aplicarIngredientes(ingredientes);
-        
+
         // Horneamos la pizza
         hpd.hornear();
     }
@@ -82,7 +84,7 @@ public class PreparadorPizza {
     private void aplicarIngredientes(Ingrediente[] ingredientes) {
         Logger.getLogger(PreparadorPizza.class.getName())
                 .log(Level.INFO, "Aplicando ingredientes: {0}", Arrays.toString(ingredientes));
-        
+
         // Código de llamado al microcontrolador (esto lo debes adaptar)
     }
 }
